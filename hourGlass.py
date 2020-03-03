@@ -8,7 +8,7 @@ def hourglassSum(arr):
             sum = 0
             for add_i in range(3):
                 for add_j in range(3):
-                    if (add_i == 1 or add_j != 1):
+                    if (add_i != 1 or add_j == 1):
                         sum += arr[i + add_i][j + add_j]
 
             if (max_sum is None or max_sum < sum):
@@ -23,3 +23,5 @@ arr = [[1, 1, 1, 0, 0, 0],
        [0, 0, 2, 4, 4, 0],
        [0, 0, 0, 2, 0, 0],
        [0, 0, 1, 2, 4, 0]]
+
+sum = hourglassSum(arr)

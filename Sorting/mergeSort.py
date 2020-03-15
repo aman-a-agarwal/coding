@@ -24,14 +24,19 @@ def merge(left, right):
 
         if leftEle < rightEle:
             merged.append(leftEle)
+            leftPointer += 1
         else:
             merged.append(rightEle)
+            rightPointer += 1
 
-    if leftPointer > len(left) and rightPointer < len(right):
-        merged = merge + right[rightPointer:]
+    if leftPointer >= len(left) and rightPointer < len(right):
+        merged = merged + right[rightPointer:]
 
-    if leftPointer < len(left) and rightPointer > len(right):
-        merged = merge + left[leftPointer:]
+    if leftPointer < len(left) and rightPointer >= len(right):
+        merged = merged + left[leftPointer:]
 
     return merged
 
+arr = [43,5,22,1,13,91]
+sorted = mergeSort(arr)
+print(sorted)

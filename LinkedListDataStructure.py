@@ -45,8 +45,10 @@ class DoublyLinkedList:
 
         if (node.prev is not None):
             node.prev.next = nodeToInsert
-            nodeToInsert.next = node
+            nodeToInsert.prev = node.prev
             node.prev = nodeToInsert
+            nodeToInsert.next = node
+
         else:
             self.setHead(nodeToInsert)
 
@@ -57,8 +59,10 @@ class DoublyLinkedList:
 
         if (node.next is not None):
             node.next.prev = nodeToInsert
-            nodeToInsert.prev = node
+            nodeToInsert.next = node.next
             node.next = nodeToInsert
+            nodeToInsert.prev = node
+
         else:
             self.setTail(nodeToInsert)
 

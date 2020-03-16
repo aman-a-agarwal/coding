@@ -46,12 +46,13 @@ class DoublyLinkedList:
         if nodeToInsert.next is not None or nodeToInsert.prev is not None:
             self.remove(nodeToInsert)  # TODO
 
-        if node.prev is not None:
+        if node is None:
+            self.setTail(nodeToInsert)
+        elif node.prev is not None:
             node.prev.next = nodeToInsert
             nodeToInsert.prev = node.prev
             node.prev = nodeToInsert
             nodeToInsert.next = node
-
         else:
             self.setHead(nodeToInsert)
 
@@ -60,12 +61,13 @@ class DoublyLinkedList:
         if nodeToInsert.next is not None or nodeToInsert.prev is not None:
             self.remove(nodeToInsert)  # TODO
 
-        if node.next is not None:
+        if node is None:
+            self.setHead(nodeToInsert)
+        elif node.next is not None:
             node.next.prev = nodeToInsert
             nodeToInsert.next = node.next
             node.next = nodeToInsert
             nodeToInsert.prev = node
-
         else:
             self.setTail(nodeToInsert)
 
@@ -74,19 +76,21 @@ class DoublyLinkedList:
         if nodeToInsert.next is not None or nodeToInsert.prev is not None:
             self.remove(nodeToInsert)  # TODO
 
-        if position == 0:
+        if position == 1:
             self.setHead(nodeToInsert)
             return
 
         currNode = self.head
-        i = 0
+        i = 1
         while i < position and currNode is not None:
             currNode = currNode.next
             i += 1
         if i == position:
             self.insertBefore(currNode, nodeToInsert)
         else:
-            print("wrong Position Called to Insert")
+            # If the mentioned position is more than the elements in linked list
+            # Add the element at the end
+            self.setTail(nodeToInsert)
 
     def removeNodesWithValue(self, value):
         # Write your code here.
@@ -157,27 +161,11 @@ class TestDoublyLinkedList(unittest.TestCase):
         linkedList.insertBefore(nodeC, nodeB)
         self.assertEqual(linkedList.head is None, False)
 
-        # Forward Direction Tests
-        self.assertEqual(linkedList.head is nodeA, True)
-        self.assertEqual(linkedList.head.next is nodeB, True)
-        self.assertEqual(linkedList.head.next.next is nodeC, True)
-
-        # Backward Direction Tests
-        self.assertEqual(linkedList.tail is nodeC, True)
-        self.assertEqual(linkedList.tail.prev is nodeB, True)
-        self.assertEqual(linkedList.tail.prev.prev is nodeA, True)
+        self.complete_linked_list_test(linkedList, nodeA, nodeB, nodeC)
 
         linkedList.insertBefore(nodeA, nodeB)
 
-        # Forward Direction Tests
-        self.assertEqual(linkedList.head is nodeB, True)
-        self.assertEqual(linkedList.head.next is nodeA, True)
-        self.assertEqual(linkedList.head.next.next is nodeC, True)
-
-        # Backward Direction Tests
-        self.assertEqual(linkedList.tail is nodeC, True)
-        self.assertEqual(linkedList.tail.prev is nodeA, True)
-        self.assertEqual(linkedList.tail.prev.prev is nodeB, True)
+        self.complete_linked_list_test(linkedList, nodeB, nodeA, nodeC)
 
     def test_insert_after(self):
         linkedList = DoublyLinkedList()
@@ -191,15 +179,7 @@ class TestDoublyLinkedList(unittest.TestCase):
         linkedList.insertAfter(nodeB, nodeC)
         self.assertEqual(linkedList.head is None, False)
 
-        # Forward Direction Tests
-        self.assertEqual(linkedList.head is nodeA, True)
-        self.assertEqual(linkedList.head.next is nodeB, True)
-        self.assertEqual(linkedList.head.next.next is nodeC, True)
-
-        # Backward Direction Tests
-        self.assertEqual(linkedList.tail is nodeC, True)
-        self.assertEqual(linkedList.tail.prev is nodeB, True)
-        self.assertEqual(linkedList.tail.prev.prev is nodeA, True)
+        self.complete_linked_list_test(linkedList, nodeA, nodeB, nodeC)
 
     def test_insert_at_position(self):
         linkedList = DoublyLinkedList()
@@ -210,19 +190,28 @@ class TestDoublyLinkedList(unittest.TestCase):
         self.assertEqual(linkedList.tail.prev is None, True)
         linkedList.setTail(nodeC)
         self.assertEqual(linkedList.tail.prev is None, False)
-        linkedList.insertAtPosition(1, nodeB)
+        linkedList.insertAtPosition(2, nodeB)
 
         self.assertEqual(linkedList.head is None, False)
 
-        # Forward Direction Tests
-        self.assertEqual(linkedList.head is nodeA, True)
-        self.assertEqual(linkedList.head.next is nodeB, True)
-        self.assertEqual(linkedList.head.next.next is nodeC, True)
+        self.complete_linked_list_test(linkedList, nodeA, nodeB, nodeC)
 
-        # Backward Direction Tests
-        self.assertEqual(linkedList.tail is nodeC, True)
-        self.assertEqual(linkedList.tail.prev is nodeB, True)
-        self.assertEqual(linkedList.tail.prev.prev is nodeA, True)
+        linkedList = DoublyLinkedList()
+        nodeA = Node(1)
+        nodeB = Node(2)
+        nodeC = Node(3)
+
+        # should be set as tail
+        linkedList.insertAtPosition(1, nodeB)
+        # should be set as head
+        linkedList.insertAtPosition(2, nodeA)
+        # should be set as tail
+        linkedList.insertAtPosition(4, nodeC)
+
+        self.assertEqual(linkedList.head is None, False)
+
+        self.complete_linked_list_test(linkedList, nodeB, nodeA, nodeC)
+
 
     def test_remove(self):
         linkedList = DoublyLinkedList()
@@ -230,7 +219,7 @@ class TestDoublyLinkedList(unittest.TestCase):
         nodeB = Node(2)
         nodeC = Node(3)
 
-        linkedList.insertAtPosition(0, nodeA)
+        linkedList.insertAtPosition(1, nodeA)
         self.assertEqual(linkedList.tail is nodeA, True)
         self.assertEqual(linkedList.head is nodeA, True)
 
@@ -252,7 +241,7 @@ class TestDoublyLinkedList(unittest.TestCase):
         self.assertEqual(linkedList.tail is nodeC, True)
         self.assertEqual(linkedList.head is nodeC, True)
 
-        linkedList.insertAtPosition(0, nodeB)
+        linkedList.insertAtPosition(1, nodeB)
         self.assertEqual(linkedList.tail is nodeB, False)
         self.assertEqual(linkedList.tail is nodeC, True)
         self.assertEqual(linkedList.head is nodeB, True)
@@ -281,10 +270,21 @@ class TestDoublyLinkedList(unittest.TestCase):
         nodeB = Node(2)
         nodeC = Node(3)
 
-        linkedList.insertAtPosition(0, nodeA)
+        linkedList.insertAtPosition(1, nodeA)
         self.assertEqual(linkedList.tail is nodeA, True)
         self.assertEqual(linkedList.head is nodeA, True)
         self.assertEqual(linkedList.containsNodeWithValue(1), True)
+
+    def complete_linked_list_test(self, linkedList, first, second, third):
+        # Forward Direction Tests
+        self.assertEqual(linkedList.head is first, True)
+        self.assertEqual(linkedList.head.next is second, True)
+        self.assertEqual(linkedList.head.next.next is third, True)
+
+        # Backward Direction Tests
+        self.assertEqual(linkedList.tail is third, True)
+        self.assertEqual(linkedList.tail.prev is second, True)
+        self.assertEqual(linkedList.tail.prev.prev is first, True)
 
 
 if __name__ == '__main__':

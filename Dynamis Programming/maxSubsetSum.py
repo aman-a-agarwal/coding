@@ -1,18 +1,11 @@
-def maxSubsetSum(arr):
-    # initialize the DP array
-    dp = [arr[0]]
-    dp.append(max(arr[0], arr[1]))
+def maxSubsetSum(nums):
+    dp = [nums[0]]
+    maxSum = nums[0]
 
-    for idx in range(2, len(arr)):
-        ele = arr[idx]
-        dp.append(max(ele, dp[idx - 1], ele + dp[idx - 2]))
-        print(dp)
-        print(ele)
-    return dp[-1]
+    for idx in range(1, len(nums)):
+        dp.append(max(nums[idx], dp[-1] + nums[idx]))
+        maxSum = max(maxSum, dp[-1])
+    return maxSum
 
 
-if __name__ == '__main__':
-
-    arr = list(map(int, "3 7 4 6 5".rstrip().split()))
-
-    res = maxSubsetSum(arr)
+print(maxSubsetSum([1, -2, 6,-3, 4, -1]))

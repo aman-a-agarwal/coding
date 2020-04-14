@@ -24,8 +24,8 @@ def getPermutations(array, curPerm=[], permuatations=[]):
         newPerm = [no] + curPerm
         getPermutations(array[0:idx] + array[idx + 1:], newPerm, permuatations)
         # permutations.append([no] + getPermutations(array[0:idx] + array[idx+1:]))
-
+    print(permuatations)
     return permuatations
 
 
-print(getPermutations([1, 2, 3, 4]))
+print(getPermutations([1, 2]))

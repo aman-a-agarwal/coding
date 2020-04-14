@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c92df301-2f10-49c1-a73e-7a96806cc6d3" name="aws-project2.1" url="http://ec2-35-173-226-119.compute-1.amazonaws.com">
+        <fileTransfer host="ec2-35-173-226-119.compute-1.amazonaws.com" port="22" privateKey="$PROJECT_DIR$/../../Spring 2020/15-319 Cloud Computing/project0.pem" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

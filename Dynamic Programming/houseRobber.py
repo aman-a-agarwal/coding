@@ -13,14 +13,15 @@ def rob(nums: List[int]) -> int:
             dp.append((max(nums[num_idx], dp[num_idx - 1][0]), True if dp[num_idx - 1][0] > nums[num_idx] else False))
         elif num_idx == len(nums) - 1:
             if not dp[num_idx - 2][1]:
-                dp.append((max(dp[num_idx - 2] + nums[num_idx], dp[num_idx - 1]),
-                           dp[num_idx - 1][1] if dp[num_idx - 1][0] > dp[num_idx - 2] + nums[num_idx] else
+                dp.append((max(dp[num_idx - 2][0] + nums[num_idx], dp[num_idx - 1][0]),
+                           dp[num_idx - 1][1] if dp[num_idx - 1][0] > dp[num_idx - 2][0] + nums[num_idx] else
                            dp[num_idx - 2][1]))
             elif not dp[num_idx - 1][1]:
                 return dp[-1][0]
         else:
-            dp.append((max(dp[num_idx - 2] + nums[num_idx], dp[num_idx - 1]),
-                       dp[num_idx - 1][1] if dp[num_idx - 1][0] > dp[num_idx - 2] + nums[num_idx] else dp[num_idx - 2][1]))
+            dp.append((max(dp[num_idx - 2][0] + nums[num_idx], dp[num_idx - 1][0]),
+                       dp[num_idx - 1][1] if dp[num_idx - 1][0] > dp[num_idx - 2][0] + nums[num_idx] else
+                       dp[num_idx - 2][1]))
     return dp[-1][0]
 
 

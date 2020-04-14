@@ -5,6 +5,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class Solution:
     def findSecondMinimumValue(self, root: TreeNode) -> int:
         self.treeElements = []

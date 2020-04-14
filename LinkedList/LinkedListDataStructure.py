@@ -212,7 +212,6 @@ class TestDoublyLinkedList(unittest.TestCase):
 
         self.complete_linked_list_test(linkedList, nodeB, nodeA, nodeC)
 
-
     def test_remove(self):
         linkedList = DoublyLinkedList()
         nodeA = Node(1)
@@ -264,7 +263,7 @@ class TestDoublyLinkedList(unittest.TestCase):
         self.assertEqual(linkedList.tail is nodeC, True)
         self.assertEqual(linkedList.head is nodeC, True)
 
-    def test_node_exists (self):
+    def test_node_exists(self):
         linkedList = DoublyLinkedList()
         nodeA = Node(1)
         nodeB = Node(2)

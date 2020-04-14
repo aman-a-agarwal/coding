@@ -1,5 +1,6 @@
 # Time Complexity: O(n)
 
+
 def moveElementToEnd(array, toMove):
     # Write your code here.
     leftPointer = 0

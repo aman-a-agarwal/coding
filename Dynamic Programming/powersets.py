@@ -7,4 +7,5 @@ def powerset(array):
             dp.append(newSet + [num])
     return dp
 
-powerset([1,2,3])
+
+powerset([1, 2, 3])

@@ -8,6 +8,8 @@ def twoNumberSum(array, targetSum):
     return []
 
 # O(n) solution
+
+
 def twoNumberSum(array, targetSum):
     # Write your code here.
     map = dict()
@@ -18,5 +20,6 @@ def twoNumberSum(array, targetSum):
         else:
             map[difference] = True
     return []
+
 
 twoNumberSum([], 168)

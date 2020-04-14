@@ -27,7 +27,8 @@ class Solution:
         #
         # completeNodeSum = leftNodeSum + rightNodeSum + parentNode.val
         # self.maxVal = max(completeNodeSum, self.maxVal)
-        # return max(leftNodeSum + parentNode.val, rightNodeSum + parentNode.val)
+        # return max(leftNodeSum + parentNode.val, rightNodeSum +
+        # parentNode.val)
 
         # Alternate 2: without max function
         leftNodeSum = self.maxPathHelper(parentNode.left)
@@ -36,7 +37,8 @@ class Solution:
         completeNodeSum = max(leftNodeSum + rightNodeSum + parentNode.val, leftNodeSum +
                               parentNode.val, rightNodeSum + parentNode.val, parentNode.val)
         self.maxVal = max(completeNodeSum, self.maxVal)
-        return max(leftNodeSum + parentNode.val, rightNodeSum + parentNode.val, parentNode.val)
+        return max(leftNodeSum + parentNode.val, rightNodeSum +
+                   parentNode.val, parentNode.val)
 
 
 # Driver program

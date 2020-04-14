@@ -4,18 +4,19 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class Tree:
     def isValidBST(self, root: TreeNode) -> bool:
         if (root is None):
             return True
         self.treeList = []
         self.inorderTraversal(root)
-        for ele in range(1,len(self.treeList)):
-            if (self.treeList[ele-1] >= self.treeList[ele]):
+        for ele in range(1, len(self.treeList)):
+            if (self.treeList[ele - 1] >= self.treeList[ele]):
                 return False
         return True
 
-    def inorderTraversal (self, root):
+    def inorderTraversal(self, root):
         if (root is None):
             return
 
@@ -95,7 +96,6 @@ class Tree:
                 return False
 
         return True
-
 
 
 r = Tree()

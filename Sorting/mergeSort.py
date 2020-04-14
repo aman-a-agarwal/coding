@@ -37,6 +37,7 @@ def merge(left, right):
 
     return merged
 
-arr = [43,5,22,1,13,91]
+
+arr = [43, 5, 22, 1, 13, 91]
 sorted = mergeSort(arr)
 print(sorted)

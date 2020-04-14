@@ -36,7 +36,8 @@ class Solution:
                 high = mid
             mid = (low + high) / 2
         # new array start at mid
-        low, high = (0, mid) if target >= nums[0] and target <= nums[mid - 1] else (mid, len(nums))
+        low, high = (
+            0, mid) if target >= nums[0] and target <= nums[mid - 1] else (mid, len(nums))
         mid = (high + low) / 2
         while low != mid:
             if target == nums[mid]:
@@ -106,7 +107,8 @@ class Solution:
             if (row > 1):
                 for col in range(len(pascal[row])):
                     if ((col > 0) and (col < row)):
-                        pascal[row][col] = pascal[row - 1][col - 1] + pascal[row - 1][col]
+                        pascal[row][col] = pascal[row - 1][col - 1] + \
+                            pascal[row - 1][col]
         return pascal
 
     def Pascal2(self, numRows: int):
@@ -242,7 +244,7 @@ class Solution:
         for i in range(n):
             cur = cur.next
 
-        while (cur != None):
+        while (cur is not None):
             cur = cur.next
             lag = lag.next
 
@@ -302,7 +304,7 @@ class Solution:
         curr = head
         prev = None
 
-        while (curr != None):
+        while (curr is not None):
             temp = ListNode(curr.val)
             temp.next = prev
 
@@ -312,7 +314,7 @@ class Solution:
         if (prev is None):
             return True
 
-        while (head != None):
+        while (head is not None):
             if (head.val != prev.val):
                 return False
             head = head.next

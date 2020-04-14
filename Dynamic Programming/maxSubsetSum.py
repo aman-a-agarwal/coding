@@ -8,4 +8,4 @@ def maxSubsetSum(nums):
     return maxSum
 
 
-print(maxSubsetSum([1, -2, 6,-3, 4, -1]))
+print(maxSubsetSum([1, -2, 6, -3, 4, -1]))

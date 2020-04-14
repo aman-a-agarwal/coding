@@ -10,7 +10,9 @@ def levenshteinDistance(str1, str2):
             if str1[idx2] == str2[idx1]:
                 dp[idx1][idx2] = dp[idx1 - 1][idx2 - 1]
             else:
-                dp[idx1][idx2] = 1 + min(dp[idx1 - 1][idx2 - 1], dp[idx1 - 1][idx2], dp[idx1][idx2 - 1])
+                dp[idx1][idx2] = 1 + min(dp[idx1 - 1][idx2 - 1],
+                                         dp[idx1 - 1][idx2], dp[idx1][idx2 - 1])
     return dp[-1][-1]
+
 
 print(levenshteinDistance("abc", "yabd"))

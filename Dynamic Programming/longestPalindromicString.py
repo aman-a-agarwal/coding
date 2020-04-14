@@ -9,7 +9,8 @@ def longestPalindrome(s: str) -> str:
             elif row_idx - col_idx == 1:
                 grid[row_idx][col_idx] = s[row_idx] == s[col_idx]
             else:
-                grid[row_idx][col_idx] = grid[row_idx - 1][col_idx + 1] and s[row_idx] == s[col_idx]
+                grid[row_idx][col_idx] = grid[row_idx -
+                                              1][col_idx + 1] and s[row_idx] == s[col_idx]
 
             if grid[row_idx][col_idx] and maxString < row_idx - col_idx + 1:
                 maxString = row_idx - col_idx + 1
@@ -17,5 +18,6 @@ def longestPalindrome(s: str) -> str:
                 end = row_idx
 
     return s[start:end]
+
 
 longestPalindrome("babad")

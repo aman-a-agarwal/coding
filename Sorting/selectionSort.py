@@ -9,5 +9,5 @@ def selectionSort(array):
     return array
 
 
-s = selectionSort([43,5,22,1,13,91])
+s = selectionSort([43, 5, 22, 1, 13, 91])
 print(s)

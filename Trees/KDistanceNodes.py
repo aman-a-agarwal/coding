@@ -29,7 +29,8 @@ class Solution:
 
             ele, level = q.popleft()
 
-            for connectedNode in [ele.left, ele.right, self.parents.get(ele.val)]:
+            for connectedNode in [ele.left, ele.right,
+                                  self.parents.get(ele.val)]:
                 if connectedNode is not None and connectedNode.val not in seen:
                     seen.append(connectedNode.val)
                     q.append((connectedNode, level + 1))
@@ -47,6 +48,7 @@ class Solution:
 
         self.dfs(node.left, node)
         self.dfs(node.right, node)
+
 
 treeRoot = TreeNode(3)
 _5 = TreeNode(5)

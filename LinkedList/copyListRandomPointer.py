@@ -5,7 +5,9 @@ class Node:
         self.next = next
         self.random = random
 
+
 null = None
+
 
 class Solution:
     def copyRandomList(self, head: Node) -> Node:
@@ -21,7 +23,6 @@ class Solution:
                 newNode = Node(head.val)
             else:
                 newNode = nodeMap.get(head.val)
-
 
             if head.random is None:
                 randomNode = None

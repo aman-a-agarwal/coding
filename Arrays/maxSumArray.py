@@ -20,4 +20,4 @@ if __name__ == '__main__':
 
     res = maxSubsetSum(arr)
 
-    print (res)
+    print(res)

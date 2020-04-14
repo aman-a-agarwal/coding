@@ -4,6 +4,7 @@ Data Structures classes
 
 """
 
+
 class List:
     def __init__(self, *args):
         pass
@@ -13,6 +14,7 @@ class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class RecursiveFunctions:
 
@@ -34,6 +36,7 @@ class RecursiveFunctions:
     e.next = f
 
     """
+
     def __init__(self):
         pass
 
@@ -50,7 +53,7 @@ class RecursiveFunctions:
             s[endindex] = s[startindex]
             s[startindex] = c
 
-            helper(startindex+1, endindex-1, s)
+            helper(startindex + 1, endindex - 1, s)
 
         s = helper(0, len(s) - 1, s)
 
@@ -58,7 +61,6 @@ class RecursiveFunctions:
 
         dummy = ListNode(0)
         dummy.next = head
-
 
         def swap(previous):
             if (previous.next is None or previous.next.next is None):
@@ -81,7 +83,7 @@ class RecursiveFunctions:
         dummy.next = head
 
         previous = dummy
-        while previous.next != None and previous.next.next:
+        while previous.next is not None and previous.next.next:
             node1 = previous.next
             node2 = previous.next.next
             previous.next = node2
@@ -100,7 +102,8 @@ class RecursiveFunctions:
             if ((str(i) + str(j)) in result_hash):
                 return result_hash[str(i) + str(j)]
             else:
-                result_hash[str(i) + str(j)] = generate(i - 1, j - 1) + generate(i - 1, j)
+                result_hash[str(i) + str(j)] = generate(i -
+                                                        1, j - 1) + generate(i - 1, j)
             return result_hash[str(i) + str(j)]
 
         res = []
@@ -110,10 +113,9 @@ class RecursiveFunctions:
 
         return res
 
-
     """
     Reverse a singly linked list.
-    
+
     A linked list can be reversed either iteratively or recursively. Could you implement both?
     """
 
@@ -123,7 +125,7 @@ class RecursiveFunctions:
         _cur = head
 
         def reverse(_prev, _cur):
-            if (_cur.next == None):
+            if (_cur.next is None):
                 return _cur
 
             _next = _cur.next
@@ -134,13 +136,14 @@ class RecursiveFunctions:
         return reverse(_prev, _cur)
 
     # TODO
-    def permutationString (self, s, prefix):
+    def permutationString(self, s, prefix):
         if len(s) == 0:
             print(prefix)
         else:
             for i in range(len(s)):
-                rem = s[0:i] + s[(i+1):]
+                rem = s[0:i] + s[(i + 1):]
                 self.permutationString(rem, prefix + s[i])
+
 
 r = RecursiveFunctions()
 
@@ -157,12 +160,3 @@ f = ListNode(6)
 # c.next = d
 # d.next = e
 # e.next = f
-
-
-
-
-
-
-
-
-

@@ -5,7 +5,8 @@ def rotLeft(a, d):
         returnList[ele] = a[idx]
     return returnList
 
-arr = [1,2,3,4,5]
+
+arr = [1, 2, 3, 4, 5]
 d = 4
 
 r = rotLeft(arr, d)

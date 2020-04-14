@@ -29,6 +29,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 from typing import List
 
+
 def maxProfit(prices: List[int]) -> int:
     if len(prices) <= 1:
         return
@@ -49,5 +50,6 @@ def maxProfit(prices: List[int]) -> int:
 
     return profit
 
-profit = maxProfit([7,6,4,3,1])
-print (profit)
+
+profit = maxProfit([7, 6, 4, 3, 1])
+print(profit)

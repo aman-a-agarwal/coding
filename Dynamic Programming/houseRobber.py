@@ -10,7 +10,8 @@ def rob(nums: List[int]) -> int:
 
     for num_idx in range(1, len(nums)):
         if num_idx == 1:
-            dp.append((max(nums[num_idx], dp[num_idx - 1][0]), True if dp[num_idx - 1][0] > nums[num_idx] else False))
+            dp.append((max(nums[num_idx], dp[num_idx - 1][0]),
+                       True if dp[num_idx - 1][0] > nums[num_idx] else False))
         elif num_idx == len(nums) - 1:
             if not dp[num_idx - 2][1]:
                 dp.append((max(dp[num_idx - 2][0] + nums[num_idx], dp[num_idx - 1][0]),
